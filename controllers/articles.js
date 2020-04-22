@@ -12,7 +12,7 @@ const getArticles = (req, res, next) => {
 const createArticle = (req, res, next) => {
   const { keyword, title, text, date, source, link, image, owner = req.user._id } = req.body;
   Article.create({ keyword, title, text, date, source, link, image, owner })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.status(201).send({ data: card }))
     .catch(next);
 };
 
