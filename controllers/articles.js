@@ -4,6 +4,7 @@ const Article = require('../models/article');
 const NotFoundError = require('../helpers/errors/NotFoundError');
 const ForbiddenError = require('../helpers/errors/ForbiddenError');
 const { OBJECT_NOT_FOUND, INVALID_ARTICLE_ID } = require('../constants/errors');
+const { SUCCESSFULLY_DELETED } = require('../constants/messages');
 
 const getArticles = (req, res, next) => {
   Article.find({})
@@ -29,9 +30,9 @@ const deleteArticle = (req, res, next) => {
       if (article.owner.toString() !== req.user._id) {
         return Promise.reject(new ForbiddenError());
       }
-      return Article.remove(article);
+      return Article.deleteOne(article);
     })
-    .then((article) => res.send({ data: article }))
+    .then(() => res.send({ message: SUCCESSFULLY_DELETED }))
     .catch(next);
 };
 
