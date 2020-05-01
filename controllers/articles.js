@@ -24,7 +24,7 @@ const deleteArticle = (req, res, next) => {
       if (article.owner.toString() !== req.user._id) {
         return Promise.reject(new ForbiddenError());
       }
-      return Article.findByIdAndDelete(articleId);
+      return Article.remove(article);
     })
     .then((article) => res.send({ data: article }))
     .catch(next);

@@ -29,7 +29,6 @@ app.use(rateLimit(RATE_LIMITER));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(requestLogger);
 
 // adding main router
 app.use(router);

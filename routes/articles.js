@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { celebrate } = require('celebrate');
 const { getArticles, createArticle, deleteArticle } = require('../controllers/articles');
-const { createArticleSchema, deleteArticleSchema } = require('../models/joiSchemas');
+const { createArticleSchema, deleteArticleSchema } = require('../middlewares/joiSchemas');
 
 router.get('/', getArticles);
 router.post('/', celebrate(createArticleSchema), createArticle);
