@@ -12,4 +12,5 @@ module.exports = {
   DEFAULT_ERROR: 'Что-то пошло не так',
   DUPLICATE_EMAIL: 'Пользователь с таким email уже существует',
   INVALID_ARTICLE_ID: 'Некорректный id статьи',
+  CONFLICT_ERROR: 'Конфликтное обращение к ресурсу',
 };

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const isEmail = require('validator/lib/isEmail');
-const BadRequestError = require('../helpers/errors/BadRequestError');
+const ConflictError = require('../helpers/errors/ConflictError');
 const { INVALID_EMAIL, INVALID_CREDENTIALS, DUPLICATE_EMAIL } = require('../constants/errors');
 
 const userSchema = new mongoose.Schema({
@@ -45,7 +45,7 @@ userSchema.statics.findUserByCredentials = function checkCredentials(email, pass
 
 userSchema.post('save', (error, doc, next) => {
   if (error.name === 'MongoError' && error.code === 11000) {
-    next(new BadRequestError(DUPLICATE_EMAIL));
+    next(new ConflictError(DUPLICATE_EMAIL));
   } else {
     next(error);
   }
