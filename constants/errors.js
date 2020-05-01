@@ -9,4 +9,5 @@ module.exports = {
   INTERNAL_ERROR: 'Внутренняя ошибка сервера',
   UNAUTHORIZED_ERROR: 'Необходимо пройти авторизацию',
   FORBIDDEN_ERROR: 'Вы не имеете прав на данную операцию',
+  DEFAULT_ERROR_MESSAGE: 'Что-то пошло не так'
 };

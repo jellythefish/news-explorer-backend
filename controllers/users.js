@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 const UnauthorizedError = require('../helpers/errors/UnauthorizedError');
+const TOKEN_EXPIRATION = require('../config');
 const { INVALID_CREDENTIALS } = require('../constants/errors');
 const { JWT_SECRET } = require('../config');
 
@@ -16,7 +17,7 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
       res.cookie('jwt', token, {
         maxAge: 1000 * 3600 * 24 * 7, // 7 days
         httpOnly: true,

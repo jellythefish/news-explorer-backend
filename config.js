@@ -11,5 +11,6 @@ const RATE_LIMITER = {
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // 100 queries from 1 ip
 };
+const TOKEN_EXPIRATION = '7d';
 
-module.exports = { SERVER_PORT, DATABASE_URI, JWT_SECRET, RATE_LIMITER };
+module.exports = { SERVER_PORT, DATABASE_URI, JWT_SECRET, RATE_LIMITER, TOKEN_EXPIRATION };
