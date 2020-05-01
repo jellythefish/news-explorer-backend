@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
 const { SERVER_PORT, DATABASE_URI, RATE_LIMITER } = require('./config');
-const { requestLogger, errorMiddleware } = require('./middlewares');
+const { errorMiddleware } = require('./middlewares');
 const router = require('./routes');
 
 // launching web-server

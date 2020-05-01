@@ -1,7 +1,9 @@
+const mongoose = require('mongoose');
+const BadRequestError = require('../helpers/errors/BadRequestError');
 const Article = require('../models/article');
 const NotFoundError = require('../helpers/errors/NotFoundError');
 const ForbiddenError = require('../helpers/errors/ForbiddenError');
-const { OBJECT_NOT_FOUND } = require('../constants/errors');
+const { OBJECT_NOT_FOUND, INVALID_ARTICLE_ID } = require('../constants/errors');
 
 const getArticles = (req, res, next) => {
   Article.find({})
@@ -18,6 +20,9 @@ const createArticle = (req, res, next) => {
 
 const deleteArticle = (req, res, next) => {
   const { articleId } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(articleId)) {
+    throw new BadRequestError(INVALID_ARTICLE_ID);
+  }
   Article.findById(articleId).select('+owner')
     .orFail(() => new NotFoundError(OBJECT_NOT_FOUND))
     .then((article) => {

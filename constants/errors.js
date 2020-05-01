@@ -9,5 +9,7 @@ module.exports = {
   INTERNAL_ERROR: 'Внутренняя ошибка сервера',
   UNAUTHORIZED_ERROR: 'Необходимо пройти авторизацию',
   FORBIDDEN_ERROR: 'Вы не имеете прав на данную операцию',
-  DEFAULT_ERROR_MESSAGE: 'Что-то пошло не так'
+  DEFAULT_ERROR: 'Что-то пошло не так',
+  DUPLICATE_EMAIL: 'Пользователь с таким email уже существует',
+  INVALID_ARTICLE_ID: 'Некорректный id статьи',
 };

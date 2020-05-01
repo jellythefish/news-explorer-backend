@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../models/user');
 const UnauthorizedError = require('../helpers/errors/UnauthorizedError');
-const TOKEN_EXPIRATION = require('../config');
+const { TOKEN_EXPIRATION } = require('../config');
 const { INVALID_CREDENTIALS } = require('../constants/errors');
 const { JWT_SECRET } = require('../config');
 
