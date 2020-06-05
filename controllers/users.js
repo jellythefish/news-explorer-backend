@@ -20,9 +20,11 @@ const login = (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
       res.cookie('jwt', token, {
         maxAge: 1000 * 3600 * 24 * 7, // 7 days
-        httpOnly: true,
-        sameSite: true,
-      }).end();
+        httpOnly: false,
+        sameSite: false,
+        // domain: 'the-news-explorer.tk',
+        // secure: true,
+      }).send({ name: user.name, token });
     })
     .catch(() => next(new UnauthorizedError(INVALID_CREDENTIALS)));
 };
@@ -39,4 +41,14 @@ const createUser = (req, res, next) => {
     .catch(next);
 };
 
-module.exports = { getUser, login, createUser };
+const logout = (req, res, next) => {
+  res.cookie('jwt', '', {
+    maxAge: 0, // reseting jwt token
+    httpOnly: false,
+    sameSite: false,
+    // domain: 'the-news-explorer.tk',
+    // secure: true,
+    }).send({ message: 'Вы успешно вышли из профиля' });
+}
+
+module.exports = { getUser, login, createUser, logout };
