@@ -14,6 +14,7 @@ router.use('/signup', celebrate(signUpSchema), createUser);
 router.use('/users', auth, usersRouter);
 router.use('/articles', auth, articlesRouter);
 router.use('/logout', auth, logout)
+router.use('/savednews-auth', auth, (req, res) => res.header('Cache-Control', 'no-cache').status(200).send());
 router.use(errorLogger);
 router.use(errors()); // celebrate errors handler
 router.use('*', (req, res, next) => next(new NotFoundError()));
