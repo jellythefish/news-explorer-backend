@@ -7,7 +7,7 @@ const errorMiddleware = (err, req, res, next) => {
   if (res.headerSent) {
     return next(err);
   }
-  return res.status(statusCode).send({ message });
+  return res.status(statusCode).send({ statusCode, message });
 };
 
 module.exports = errorMiddleware;
