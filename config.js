@@ -13,7 +13,7 @@ const JWT_SECRET = NODE_ENV === 'production' && JWT_SECRET_ENV ? JWT_SECRET_ENV 
 const ALLOWED_ORIGINS = ENV_ALLOWED_ORIGINS_ARR.length > 0 ? ENV_ALLOWED_ORIGINS_ARR : DEFAULT_ORIGINS;
 const RATE_LIMITER = {
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // 100 queries from 1 ip
+  max: 1000, // 1000 queries from 1 ip
 };
 const TOKEN_EXPIRATION = '7d';
 

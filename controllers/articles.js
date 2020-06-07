@@ -8,7 +8,10 @@ const { SUCCESSFULLY_DELETED } = require('../constants/messages');
 
 const getArticles = (req, res, next) => {
   Article.find({})
-    .then((articles) => res.send({ data: articles }))
+    .then((articles) => {
+      const userArticles = articles.filter((article) => article.owner.toString() === req.user._id);
+      res.send({ data: userArticles });
+    })
     .catch(next);
 };
 
@@ -24,7 +27,7 @@ const deleteArticle = (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(articleId)) {
     throw new BadRequestError(INVALID_ARTICLE_ID);
   }
-  Article.findById(articleId).select('+owner')
+  Article.findById(articleId)
     .orFail(() => new NotFoundError(OBJECT_NOT_FOUND))
     .then((article) => {
       if (article.owner.toString() !== req.user._id) {
