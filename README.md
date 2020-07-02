@@ -34,11 +34,11 @@ URL: https://api.the-news-explorer.tk
 
 * [Выйти из аккаунта](docs/logout.md) : `POST api.the-news-explorer.tk/logout`
 
-### Преавторизационный метод
+### Предавторизационный метод
 
 Данный метод используется для проверки авторизации при доступе на страницу сохраненных статей.  
 
-* [Преавторизационный запрос](docs/savednews_auth.md) : `POST api.the-news-explorer.tk/savednews-auth`
+* [Предавторизационный запрос](docs/savednews_auth.md) : `POST api.the-news-explorer.tk/savednews-auth`
 
 ## Установка
 
