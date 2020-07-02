@@ -1,7 +1,7 @@
 # Бэкенд веб-приложения News Explorer
 
 URL: https://api.the-news-explorer.tk  
-Фротненд: https://the-news-explorer.tk  
+Фронтенд: https://the-news-explorer.tk  
 
 ## Методы API, не требующие аутентификации
 
