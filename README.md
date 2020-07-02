@@ -45,7 +45,7 @@ URL: https://api.the-news-explorer.tk
 #### 1. Загрузите исходный код проекта:
 
    ```bash
-git clone https://github.com/jellythefish/backend-mesto.git
+git clone https://github.com/jellythefish/news-explorer-backend.git
    ```
 
 #### 2. Установите Node.js и MongoDB Community Server:
@@ -71,7 +71,7 @@ mongod # (для пользователей Mac)
 #### 5. В консоли перейдите в папку с загруженным проектом и установите зависимости node:
 
    ```bash
-cd backend-mesto
+cd news-explorer-backend
 npm i
    ```
    
